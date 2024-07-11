@@ -4,13 +4,15 @@ import { BookSearchContext } from "../../contexts/BookSearchContextProvider";
 import { fetchBooks } from "../../services/books-service";
 
 const BookSearch = () => {
-	const searchInputRef = useRef(null);
 	const { books, setBooks } = useContext(BookSearchContext);
+	const searchInputRef = useRef(null);
+	const numResultsRef = useRef(null);
 
 	const handleSearch = async e => {
 		e.preventDefault();
 		const searchQuery = searchInputRef.current.value;
-		const retrievedBooks = await fetchBooks(searchQuery, 10);
+		const numResults = numResultsRef.current.value;
+		const retrievedBooks = await fetchBooks(searchQuery, numResults);
 		setBooks(retrievedBooks);
 		searchInputRef.current.value = "";
 	};
@@ -24,9 +26,20 @@ const BookSearch = () => {
 				name="search"
 				id="search"
 				ref={searchInputRef}
+				required
 			/>
+			<select
+				name="numResults"
+				id="numResults"
+				ref={numResultsRef}
+			>
+				<option value={10}>10</option>
+				<option value={20}>20</option>
+				<option value={40}>40</option>
+			</select>
 			<button onClick={handleSearch}>Search</button>
 		</form>
 	);
 };
+
 export default BookSearch;
