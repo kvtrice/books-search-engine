@@ -4,10 +4,14 @@ export const fetchBooks = async (searchQuery, numResults) => {
 	);
 
 	if (!response.ok) {
-		throw new Error("Unable to find books");
+		throw new Error("Unable to retrieve books, please try again later.");
 	}
 
 	const data = await response.json();
+
+	if (data.items.length === 0) {
+		throw new Error("No books found, please try another search term.");
+	}
 
 	const cleanedData = data.items.map(book => {
 		const newBook = {
