@@ -1,4 +1,4 @@
-import styles from "./Book.module.scss";
+import styles from "./BookCard.module.scss";
 
 const Book = () => {
 	return <div>Book</div>;
