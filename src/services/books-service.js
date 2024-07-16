@@ -21,16 +21,18 @@ export const fetchBooks = async (searchQuery, numResults) => {
 	const cleanedData = data.items.map(book => {
 		const newBook = {
 			id: book.id,
-			title: book.volumeInfo.title,
+			title: book.volumeInfo.title || "No title available",
 			authors: book.volumeInfo.authors || "Unknown author",
-			publisher: book.volumeInfo.publisher,
-			publishedDate: book.volumeInfo.publishedDate,
-			longDescription: book.volumeInfo.description,
-			pageCount: book.volumeInfo.pageCount,
-			genres: book.volumeInfo.categories,
-			shortDescription: cleanUpHTMLDescriptions(
-				book.searchInfo?.textSnippet
-			),
+			publisher: book.volumeInfo.publisher || "Unknown publisher",
+			publishedDate:
+				book.volumeInfo.publishedDate || "Unknown published date",
+			longDescription:
+				book.volumeInfo.description || "No description available",
+			pageCount: book.volumeInfo.pageCount || "Unknown page count",
+			genres: book.volumeInfo.categories || "No categories available",
+			shortDescription: book.searchInfo?.textSnippet
+				? cleanUpHTMLDescriptions(book.searchInfo?.textSnippet)
+				: "No description available",
 			image:
 				book.volumeInfo.imageLinks?.thumbnail ||
 				"https://scholastic.asia/sites/all/themes/scholastic_asia/images/default-book.png",
