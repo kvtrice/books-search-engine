@@ -1,8 +1,17 @@
 @use "../../styles/variables" as v;
 @use "../../styles/mixins" as m;
 
+.headerContainer {
+	padding: 5rem 0 3rem 0;
+	background-color: lightblue;
+	border-radius: 0 0 80px 80px;
+	@include m.flex-center;
+	box-shadow: 0px 3px 15px #b1b1b1;
+	width: 100%;
+}
+
 .header {
-	margin-top: 5rem;
+	width: 100%;
 
 	&__heading {
 		text-align: center;
