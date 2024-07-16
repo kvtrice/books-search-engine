@@ -1,17 +1,18 @@
 import Header from "./components/Header/Header";
-import BookSearch from "./components/BookSearch/BookSearch";
 import BooksContainer from "./containers/BooksContainer/BooksContainer";
 import BookSearchContextProvider from "./contexts/BookSearchContextProvider";
 import FetchStatusContextProvider from "./contexts/FetchStatusContextProvider";
+import ErrorContextProvider from "./contexts/ErrorContextProvider";
 
 function App() {
 	return (
 		<>
-			<Header />
 			<FetchStatusContextProvider>
 				<BookSearchContextProvider>
-					<BookSearch />
-					<BooksContainer />
+					<ErrorContextProvider>
+						<Header />
+						<BooksContainer />
+					</ErrorContextProvider>
 				</BookSearchContextProvider>
 			</FetchStatusContextProvider>
 		</>

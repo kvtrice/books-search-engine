@@ -5,20 +5,18 @@ import BookCard from "../../components/BookCard/BookCard";
 import { FetchStatusContext } from "../../contexts/FetchStatusContextProvider";
 import Modal from "../../components/Modal/Modal";
 import BookDetails from "../../components/BookDetails/BookDetails";
+import { ErrorContext } from "../../contexts/ErrorContextProvider";
 
 const BooksContainer = () => {
 	const { books } = useContext(BookSearchContext);
 	const { fetchStatus } = useContext(FetchStatusContext);
+	const { error } = useContext(ErrorContext);
 	const [isShowModal, setIsShowModal] = useState(false);
 	const [currentBook, setCurrentBook] = useState(null);
 
 	return (
 		<>
-			{fetchStatus === "ERROR" && (
-				<p className={styles.error}>
-					No books found, please try another search term
-				</p>
-			)}
+			{fetchStatus === "ERROR" && <p className={styles.error}>{error}</p>}
 			{fetchStatus === "LOADING" && <p>...loading</p>}
 			{fetchStatus === "SUCCESS" && (
 				<div className={styles.container}>

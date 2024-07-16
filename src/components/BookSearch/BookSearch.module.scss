@@ -4,27 +4,38 @@
 .form {
 	@include m.flex-center;
 	gap: 1rem;
-	margin: 1rem;
-    width: 100%;
-    max-width: 600px;
+	padding: 1rem;
+	width: 100%;
+	max-width: 600px;
 
 	&__inputDiv {
 		display: flex;
 		flex-direction: row;
 		gap: 0.5rem;
-        width: 100%;
+		width: 100%;
+		border-radius: 50px;
+		padding: 0.3rem;
+		background-color: white;
+
+		&:focus-within {
+			outline: 2px solid rgb(209, 230, 173);
+		}
 	}
 
 	&__searchInput {
 		border-radius: 50px;
-		padding: 0.5rem;
-		border: 1px solid grey;
-        width: 100%;
+		padding: 0 0.5rem;
+		border: none;
+		width: 100%;
 
-        &::placeholder {
-            font-style: italic;
-            color: rgb(187, 187, 187);
-        }
+		&::placeholder {
+			font-style: italic;
+			color: rgb(187, 187, 187);
+		}
+
+		&:focus {
+			outline: none;
+		}
 	}
 
 	&__numResults {
@@ -35,6 +46,14 @@
 	&__button {
 		padding: 0.5rem;
 		border-radius: 50px;
-		border: 1px solid grey;
+		border: none;
+		transition: 200ms;
+		background-color: v.$primary-btn-color;
+		color: v.$primary-btn-text-color;
+		cursor: pointer;
+
+		&:hover {
+			transform: scale(1.05);
+		}
 	}
 }

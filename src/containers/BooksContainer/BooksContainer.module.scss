@@ -2,9 +2,11 @@
 @use "../../styles/mixins" as m;
 
 .container {
+	padding: 3rem 2rem;
 	display: grid;
+	justify-content: center;
 	grid-template-columns: repeat(auto-fill, 250px);
-	gap: 1rem;
+	gap: 2em;
 	flex-wrap: wrap;
 	width: 100%;
 }
