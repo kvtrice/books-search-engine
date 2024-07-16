@@ -34,24 +34,36 @@ const BookSearch = () => {
 
 	return (
 		<>
-			<form>
-				<input
-					type="text"
-					name="search"
-					id="search"
-					ref={searchInputRef}
-					required
-				/>
-				<select
-					name="numResults"
-					id="numResults"
-					ref={numResultsRef}
-				>
-					<option value={10}>10</option>
-					<option value={20}>20</option>
-					<option value={40}>40</option>
-				</select>
-				<button onClick={handleSearch}>Search</button>
+			<form className={styles.form}>
+				<div className={styles.form__inputDiv}>
+					<input
+						className={styles.form__searchInput}
+						type="text"
+						name="search"
+						id="search"
+						ref={searchInputRef}
+						placeholder="Enter a Book Title, Author, Publisher..."
+						required
+					/>
+					<select
+						className={styles.form__numResults}
+						name="numResults"
+						id="numResults"
+						ref={numResultsRef}
+					>
+						<option value={10}>10</option>
+						<option value={20}>20</option>
+						<option value={40}>40</option>
+					</select>
+				</div>
+				<div className={styles.form__buttonDiv}>
+					<button
+						onClick={handleSearch}
+						className={styles.form__button}
+					>
+						Search
+					</button>
+				</div>
 			</form>
 		</>
 	);

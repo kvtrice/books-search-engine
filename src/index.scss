@@ -1,0 +1,13 @@
+@use "./styles/variables" as v;
+@use "./styles/mixins" as m;
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+#root {
+	font-family: v.$primary-font;
+	@include m.flex-center;
+	width: 100%;
+}
