@@ -14,13 +14,15 @@ const BooksContainer = () => {
 
 	return (
 		<>
-			<div className={styles.container}>
-				{fetchStatus === "ERROR" && (
-					<p>No books found, please try another search term</p>
-				)}
-				{fetchStatus === "LOADING" && <p>...loading</p>}
-				{fetchStatus === "SUCCESS" &&
-					books?.map(book => (
+			{fetchStatus === "ERROR" && (
+				<p className={styles.error}>
+					No books found, please try another search term
+				</p>
+			)}
+			{fetchStatus === "LOADING" && <p>...loading</p>}
+			{fetchStatus === "SUCCESS" && (
+				<div className={styles.container}>
+					{books?.map(book => (
 						<BookCard
 							key={book.id}
 							book={book}
@@ -28,12 +30,13 @@ const BooksContainer = () => {
 							setIsShowModal={setIsShowModal}
 						/>
 					))}
-				{isShowModal && (
-					<Modal setIsShowModal={setIsShowModal}>
-						<BookDetails book={currentBook} />
-					</Modal>
-				)}
-			</div>
+				</div>
+			)}
+			{isShowModal && (
+				<Modal setIsShowModal={setIsShowModal}>
+					<BookDetails book={currentBook} />
+				</Modal>
+			)}
 		</>
 	);
 };

@@ -1,0 +1,40 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.form {
+	@include m.flex-center;
+	gap: 1rem;
+	margin: 1rem;
+    width: 100%;
+    max-width: 600px;
+
+	&__inputDiv {
+		display: flex;
+		flex-direction: row;
+		gap: 0.5rem;
+        width: 100%;
+	}
+
+	&__searchInput {
+		border-radius: 50px;
+		padding: 0.5rem;
+		border: 1px solid grey;
+        width: 100%;
+
+        &::placeholder {
+            font-style: italic;
+            color: rgb(187, 187, 187);
+        }
+	}
+
+	&__numResults {
+		border-radius: 5px;
+		border: 1px solid grey;
+	}
+
+	&__button {
+		padding: 0.5rem;
+		border-radius: 50px;
+		border: 1px solid grey;
+	}
+}

@@ -1,0 +1,13 @@
+@use "./variables" as v;
+
+@mixin mobile-media-query {
+	@media only screen and (max-width: v.$mobile-breakpoint) {
+		@content;
+	}
+}
+
+@mixin flex-center {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}

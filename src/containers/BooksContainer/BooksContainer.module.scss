@@ -1,6 +1,14 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
 .container {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, 250px);
 	gap: 1rem;
 	flex-wrap: wrap;
+	width: 100%;
+}
+
+.error {
+	color: red;
 }

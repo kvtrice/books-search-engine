@@ -1,3 +1,6 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
 .modal {
 	border-radius: 5px;
 	background-color: white;

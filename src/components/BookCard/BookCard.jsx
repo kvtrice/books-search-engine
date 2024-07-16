@@ -14,7 +14,7 @@ const Book = ({ book, setCurrentBook, setIsShowModal }) => {
 			<p>Title: {book.title}</p>
 			<p>
 				Authors:{" "}
-				{book.authors.length > 1
+				{book.authors?.length > 1
 					? book.authors.join(", ")
 					: book.authors}
 			</p>
