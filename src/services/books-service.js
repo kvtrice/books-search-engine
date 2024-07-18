@@ -9,7 +9,7 @@ export const fetchBooks = async (searchQuery, numResults) => {
 
 	const data = await response.json();
 
-	if (data.items.length === 0) {
+	if (data.totalItems === 0) {
 		throw new Error("No books found, please try another search term.");
 	}
 
@@ -26,8 +26,6 @@ export const fetchBooks = async (searchQuery, numResults) => {
 			publisher: book.volumeInfo.publisher || "Unknown publisher",
 			publishedDate:
 				book.volumeInfo.publishedDate || "Unknown published date",
-			longDescription:
-				book.volumeInfo.description || "No description available",
 			pageCount: book.volumeInfo.pageCount || "Unknown page count",
 			genres: book.volumeInfo.categories || "No categories available",
 			shortDescription: book.searchInfo?.textSnippet

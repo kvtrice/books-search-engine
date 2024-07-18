@@ -46,10 +46,10 @@ const Book = ({ book, setCurrentBook, setIsShowModal }) => {
 					</p>
 				) : (
 					<p className={styles.description}>
-						{book.shortDescription.length > 75
-							? `${book.shortDescription.slice(0, 75)}...`
+						{book.shortDescription.length > 50
+							? `${book.shortDescription.slice(0, 50)}...`
 							: book.shortDescription}
-						{book.shortDescription.length > 75 && (
+						{book.shortDescription.length > 50 && (
 							<button
 								className={styles.expandButton}
 								onClick={toggleSeeMore}

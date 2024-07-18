@@ -8,9 +8,16 @@
 	grid-template-columns: repeat(auto-fill, 250px);
 	gap: 2em;
 	flex-wrap: wrap;
-	width: 100%;
+	width: calc(90% - 2rem);
 }
 
 .error {
-	color: red;
+	margin-top: 3rem;
+	color: grey;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+.loading {
+	margin-top: 3rem;
 }

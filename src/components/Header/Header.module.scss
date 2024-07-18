@@ -1,19 +1,50 @@
 @use "../../styles/variables" as v;
 @use "../../styles/mixins" as m;
 
+.wrapper {
+	width: 100%;
+
+	&__full {
+		width: 100%;
+		overflow: hidden;
+		height: 100vh;
+	}
+}
+
 .headerContainer {
 	padding: 5rem 0 3rem 0;
-	background-color: lightblue;
-	border-radius: 0 0 80px 80px;
+	background-color: v.$secondar-bg-color;
+	border-radius: 0 0 60px 60px;
 	@include m.flex-center;
 	box-shadow: 0px 3px 15px #b1b1b1;
-	width: 100%;
+	transition: 400ms ease-in-out;
+
+	&__full {
+		padding-top: 20%;
+		background-color: v.$secondar-bg-color;
+		@include m.flex-center;
+		transition: 400ms ease-in-out;
+		height: 100%;
+	}
 }
 
 .header {
 	width: 100%;
 
 	&__heading {
+		font-family: v.$heading-font;
+		font-size: 60px;
 		text-align: center;
+		color: white;
 	}
+}
+
+.loading {
+	padding-top: 3rem;
+}
+
+.heroImage {
+	max-width: 400px;
+	width: 80%;
+	padding: 3rem 1rem 1rem 1rem;
 }
