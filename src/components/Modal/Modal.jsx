@@ -29,4 +29,5 @@ const Modal = ({ children, setIsShowModal }) => {
 		</div>
 	);
 };
+
 export default Modal;

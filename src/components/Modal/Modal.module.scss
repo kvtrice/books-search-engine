@@ -2,10 +2,19 @@
 @use "../../styles/mixins" as m;
 
 .modal {
-	border-radius: 5px;
-	background-color: white;
+	border-radius: 20px;
+	background-color: v.$primary-bg-color;
 	padding: 2rem;
-	width: 30rem;
+	max-width: 500px;
+	width: calc(90% - 2rem);
+	margin: 1rem;
+	max-height: 90vh;
+	overflow-y: auto;
+
+	@include m.mobile-media-query {
+		padding: 1rem;
+		margin: 0.5rem;
+	}
 
 	&__container {
 		position: fixed;
@@ -25,6 +34,7 @@
 		font-size: 2rem;
 
 		&__close {
+			font-size: 2rem;
 			cursor: pointer;
 			margin: 0;
 		}
@@ -32,6 +42,10 @@
 
 	&__content {
 		margin-bottom: 2rem;
+
+		@include m.mobile-media-query {
+			margin-bottom: 1rem;
+		}
 	}
 
 	&__footer {
@@ -41,13 +55,19 @@
 
 		&__btn {
 			border: none;
-			color: white;
-			border-radius: 5px;
-			box-shadow: 0px 5px 5px #ccc;
+			font-size: 16px;
+			color: v.$primary-text-color;
+			border-radius: 50px;
+			box-shadow: 0px 2px 10px #ccc;
 			font-size: 1rem;
-			background-color: #44599f;
+			background-color: v.$primary-btn-color;
 			padding: 0.5rem 1rem;
 			cursor: pointer;
+			transition: 200ms;
+
+			&:hover {
+				transform: scale(1.1);
+			}
 		}
 	}
 }

@@ -1,6 +1,14 @@
-$primary-font: "Ariel", sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lilita+One&display=swap");
+
+$heading-font: "Lilita One", sans-serif;
+$primary-font: "Outfit", sans-serif;
 $primary-bg-color: #fff;
+$secondar-bg-color: #006e61;
 $primary-text-color: #000;
-$primary-btn-color: #44599f;
-$primary-btn-text-color: #fff;
+$primary-btn-color: #cae062;
+$primary-btn-text-color: #000;
+
+$tile-color: #e9e3cf;
+
 $mobile-breakpoint: 800px;

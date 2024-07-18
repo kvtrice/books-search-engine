@@ -5,7 +5,7 @@
 	@include m.flex-center;
 	gap: 1rem;
 	padding: 1rem;
-	width: 100%;
+	width: 90%;
 	max-width: 600px;
 
 	&__inputDiv {
@@ -18,7 +18,7 @@
 		background-color: white;
 
 		&:focus-within {
-			outline: 2px solid rgb(209, 230, 173);
+			outline: 2px solid #CAE062;
 		}
 	}
 
@@ -27,9 +27,9 @@
 		padding: 0 0.5rem;
 		border: none;
 		width: 100%;
+		font-size: 16px;
 
 		&::placeholder {
-			font-style: italic;
 			color: rgb(187, 187, 187);
 		}
 
@@ -45,8 +45,9 @@
 
 	&__button {
 		padding: 0.5rem;
+		font-size: 16px;
 		border-radius: 50px;
-		border: none;
+		border: 1px solid transparent;
 		transition: 200ms;
 		background-color: v.$primary-btn-color;
 		color: v.$primary-btn-text-color;

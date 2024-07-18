@@ -33,7 +33,7 @@ const BookSearch = () => {
 			} catch (error) {
 				setBooks([]);
 				setFetchStatus("ERROR");
-				setError(error);
+				setError(error.message);
 			}
 
 			searchInputRef.current.value = "";
