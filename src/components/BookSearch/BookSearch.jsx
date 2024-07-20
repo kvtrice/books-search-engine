@@ -16,8 +16,7 @@ const BookSearch = () => {
 	const handleSubmit = async e => {
 		e.preventDefault();
 		setFetchStatus("LOADING");
-		const form = e.target;
-		const searchForm = new FormData(form);
+		const searchForm = new FormData(e.target);
 		const searchQuery = searchForm.get("search").trim();
 		const numResults = searchForm.get("numResults");
 
@@ -36,7 +35,7 @@ const BookSearch = () => {
 		setPage(1);
 
 		await handleSearch(searchQuery, 1, numResults);
-		form.reset();
+		e.target.search.value = "";
 	};
 
 	return (
