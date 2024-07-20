@@ -10,6 +10,7 @@ const BookSearch = () => {
 		setSearchQuery,
 		setNumResults,
 		setError,
+		setPage,
 	} = useContext(BookSearchContext);
 
 	const handleSubmit = async e => {
@@ -17,20 +18,25 @@ const BookSearch = () => {
 		setFetchStatus("LOADING");
 		const form = e.target;
 		const searchForm = new FormData(form);
-		const searchQuery = searchForm.get("search");
+		const searchQuery = searchForm.get("search").trim();
 		const numResults = searchForm.get("numResults");
-		setSearchQuery(searchQuery);
-		setNumResults(numResults);
 
-		if (!searchQuery || searchQuery.trim() === "") {
+		if (!searchQuery) {
 			setBooks([]);
+			setPage(1);
+			setSearchQuery(searchQuery);
+			setNumResults(0);
 			setFetchStatus("ERROR");
 			setError("Please enter a valid search term");
 			return;
 		}
 
-		handleSearch(searchQuery, (page = 1), numResults);
-		
+		setSearchQuery(searchQuery);
+		setNumResults(numResults);
+		setPage(1);
+
+		await handleSearch(searchQuery, 1, numResults);
+		form.reset();
 	};
 
 	return (

@@ -14,6 +14,7 @@ const BookSearchContextProvider = ({ children }) => {
 
 	const handleSearch = async (searchQuery, page, numResults) => {
 		setFetchStatus("LOADING");
+		setError(null);
 		try {
 			const data = await fetchBooks(searchQuery, page, numResults);
 			setBooks(data.books);
