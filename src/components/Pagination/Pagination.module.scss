@@ -1,0 +1,38 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.pagination {
+	padding: 2rem;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 2rem;
+
+	&__text {
+		margin: 0;
+		font-weight: 500;
+		font-size: 25px;
+	}
+
+	&__button {
+		background-color: v.$primary-btn-color;
+		padding: 0.5rem 1rem;
+		border: 1px solid transparent;
+		border-radius: 50px;
+		cursor: pointer;
+		transition: 200ms;
+
+		&:disabled {
+			background-color: lightgray;
+
+			&:hover {
+				transform: none;
+				cursor: auto;
+			}
+		}
+
+		&:hover {
+			transform: scale(1.05);
+		}
+	}
+}

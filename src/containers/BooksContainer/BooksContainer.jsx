@@ -15,10 +15,12 @@ const BooksContainer = () => {
 
 	return (
 		<>
-			<Pagination
-				currentPage={page}
-				lastPage={totalPages}
-			/>
+			{books && (
+				<Pagination
+					currentPage={page}
+					lastPage={totalPages}
+				/>
+			)}
 			{fetchStatus === "ERROR" && <p className={styles.error}>{error}</p>}
 			{books && fetchStatus === "LOADING" && (
 				<ThreeDots
@@ -37,6 +39,12 @@ const BooksContainer = () => {
 						/>
 					))}
 				</div>
+			)}
+			{books && fetchStatus !== "LOADING" && !error && (
+				<Pagination
+					currentPage={page}
+					lastPage={totalPages}
+				/>
 			)}
 			{isShowModal && (
 				<Modal setIsShowModal={setIsShowModal}>

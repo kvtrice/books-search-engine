@@ -13,7 +13,7 @@
 
 .headerContainer {
 	padding: 5rem 0 3rem 0;
-	background-color: v.$secondar-bg-color;
+	background-color: v.$secondary-bg-color;
 	border-radius: 0 0 60px 60px;
 	@include m.flex-center;
 	box-shadow: 0px 3px 15px #b1b1b1;
@@ -25,7 +25,7 @@
 
 	&__full {
 		padding-top: 20rem;
-		background-color: v.$secondar-bg-color;
+		background-color: v.$secondary-bg-color;
 		@include m.flex-center;
 		transition: 400ms ease-in-out;
 		height: 100%;
