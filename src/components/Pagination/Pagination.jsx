@@ -6,19 +6,24 @@ const Pagination = ({ currentPage, lastPage }) => {
 	const { setPage, error } = useContext(BookSearchContext);
 
 	return (
-		<nav aria-label="Page navigation">
+		<nav
+			aria-label="Page navigation"
+			className={styles.pagination}
+		>
 			<button
+				className={styles.pagination__button}
 				disabled={currentPage === 1}
 				onClick={() => setPage(currentPage - 1)}
 			>
-				Prev
+				&larr; Prev
 			</button>
-			<span>{currentPage}</span>
+			<p className={styles.pagination__text}>{currentPage}</p>
 			<button
+				className={styles.pagination__button}
 				disabled={currentPage === lastPage || error}
 				onClick={() => setPage(currentPage + 1)}
 			>
-				Next
+				Next &rarr;
 			</button>
 		</nav>
 	);
