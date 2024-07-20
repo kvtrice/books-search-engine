@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styles from "./BookCard.module.scss";
 
 const Book = ({ book, setCurrentBook, setIsShowModal }) => {
