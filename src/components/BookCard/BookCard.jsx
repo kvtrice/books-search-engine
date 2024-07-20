@@ -35,7 +35,7 @@ const Book = ({ book, setCurrentBook, setIsShowModal }) => {
 				{isExpanded ? (
 					<p className={styles.description}>
 						{book.shortDescription}
-						{book.shortDescription.length > 75 && (
+						{book.shortDescription.length > 50 && (
 							<button
 								className={styles.expandButton}
 								onClick={toggleSeeMore}

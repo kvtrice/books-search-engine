@@ -1,61 +1,56 @@
-import { useContext, useRef, useState } from "react";
+import { useContext } from "react";
 import styles from "./BookSearch.module.scss";
 import { BookSearchContext } from "../../contexts/BookSearchContextProvider";
-import { fetchBooks } from "../../services/books-service";
-import { FetchStatusContext } from "../../contexts/FetchStatusContextProvider";
-import { ErrorContext } from "../../contexts/ErrorContextProvider";
 
 const BookSearch = () => {
-	const { setFetchStatus } = useContext(FetchStatusContext);
-	const { setBooks } = useContext(BookSearchContext);
-	const { setError } = useContext(ErrorContext);
-	const searchInputRef = useRef(null);
-	const numResultsRef = useRef(null);
+	const {
+		setBooks,
+		setFetchStatus,
+		handleSearch,
+		setSearchQuery,
+		setNumResults,
+		setError,
+	} = useContext(BookSearchContext);
 
-	const handleSearch = async e => {
+	const handleSubmit = async e => {
 		e.preventDefault();
 		setFetchStatus("LOADING");
-		const searchQuery = searchInputRef.current.value;
-		const numResults = numResultsRef.current.value;
+		const form = e.target;
+		const searchForm = new FormData(form);
+		const searchQuery = searchForm.get("search");
+		const numResults = searchForm.get("numResults");
+		setSearchQuery(searchQuery);
+		setNumResults(numResults);
 
 		if (!searchQuery || searchQuery.trim() === "") {
 			setBooks([]);
 			setFetchStatus("ERROR");
 			setError("Please enter a valid search term");
-		} else {
-			try {
-				const retrievedBooks = await fetchBooks(
-					searchQuery,
-					numResults
-				);
-				setBooks(retrievedBooks);
-				setFetchStatus("SUCCESS");
-			} catch (error) {
-				setBooks([]);
-				setFetchStatus("ERROR");
-				setError(error.message);
-			}
-
-			searchInputRef.current.value = "";
+			return;
 		}
+
+		handleSearch(searchQuery, (page = 1), numResults);
+		
 	};
 
 	return (
 		<>
-			<form className={styles.form}>
+			<form
+				className={styles.form}
+				onSubmit={handleSubmit}
+			>
 				<div className={styles.form__inputDiv}>
 					<input
 						className={styles.form__searchInput}
 						type="text"
 						name="search"
 						id="search"
-						ref={searchInputRef}
 						placeholder="Enter a Book Title, Author, Publisher..."
 						required={true}
 					/>
 					<div className={styles.form__buttonDiv}>
 						<button
-							onClick={handleSearch}
+							type="submit"
 							className={styles.form__button}
 						>
 							Search
@@ -66,7 +61,6 @@ const BookSearch = () => {
 					className={styles.form__numResults}
 					name="numResults"
 					id="numResults"
-					ref={numResultsRef}
 				>
 					<option value={10}>10</option>
 					<option value={20}>20</option>

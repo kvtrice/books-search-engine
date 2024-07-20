@@ -2,21 +2,23 @@ import { useContext, useState } from "react";
 import styles from "./BooksContainer.module.scss";
 import { BookSearchContext } from "../../contexts/BookSearchContextProvider";
 import BookCard from "../../components/BookCard/BookCard";
-import { FetchStatusContext } from "../../contexts/FetchStatusContextProvider";
 import Modal from "../../components/Modal/Modal";
 import BookDetails from "../../components/BookDetails/BookDetails";
-import { ErrorContext } from "../../contexts/ErrorContextProvider";
 import ThreeDots from "react-loading-icons/dist/esm/components/three-dots";
+import Pagination from "../../components/Pagination/Pagination";
 
 const BooksContainer = () => {
-	const { books } = useContext(BookSearchContext);
-	const { fetchStatus } = useContext(FetchStatusContext);
-	const { error } = useContext(ErrorContext);
+	const { books, page, totalPages, fetchStatus, error } =
+		useContext(BookSearchContext);
 	const [isShowModal, setIsShowModal] = useState(false);
 	const [currentBook, setCurrentBook] = useState(null);
 
 	return (
 		<>
+			<Pagination
+				currentPage={page}
+				lastPage={totalPages}
+			/>
 			{fetchStatus === "ERROR" && <p className={styles.error}>{error}</p>}
 			{books && fetchStatus === "LOADING" && (
 				<ThreeDots

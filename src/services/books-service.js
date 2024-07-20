@@ -1,6 +1,9 @@
-export const fetchBooks = async (searchQuery, numResults) => {
+export const fetchBooks = async (searchQuery, page = 1, numResults = 10) => {
+	// Calculate the startIndex dynamically based on the page number & numResults
+	const startIndex = (page - 1) * numResults;
+
 	const response = await fetch(
-		`https://www.googleapis.com/books/v1/volumes?q=${searchQuery}&maxResults=${numResults}`
+		`https://www.googleapis.com/books/v1/volumes?q=${searchQuery}&maxResults=${numResults}&startIndex=${startIndex}`
 	);
 
 	if (!response.ok) {
@@ -13,11 +16,16 @@ export const fetchBooks = async (searchQuery, numResults) => {
 		throw new Error("No books found, please try another search term.");
 	}
 
+	// Get total pages from the returned totalItems and numResults
+	const totalPages = Math.ceil(data.totalItems / numResults);
+
+	// Function to format the short descriptions (which are in HTML)
 	const cleanUpHTMLDescriptions = text => {
 		const doc = new DOMParser().parseFromString(text, "text/html");
 		return doc.documentElement.textContent;
 	};
 
+	// Create a new object in a clear structure
 	const cleanedData = data.items.map(book => {
 		const newBook = {
 			id: book.id,
@@ -39,5 +47,5 @@ export const fetchBooks = async (searchQuery, numResults) => {
 		return newBook;
 	});
 
-	return cleanedData;
+	return { books: cleanedData, totalPages };
 };
