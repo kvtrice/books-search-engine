@@ -63,15 +63,25 @@ const BookSearch = () => {
 						</button>
 					</div>
 				</div>
-				<select
-					className={styles.form__numResults}
-					name="numResults"
-					id="numResults"
-				>
-					<option value={10}>10</option>
-					<option value={20}>20</option>
-					<option value={40}>40</option>
-				</select>
+				<div className={styles.form__numResultsWrapper}>
+					<label
+						htmlFor="numResults"
+						className={styles.form__numResultsLabel}
+					>
+						Results per page:{" "}
+					</label>
+					<div className={styles.form__numResultsContainer}>
+						<select
+							className={styles.form__numResults}
+							name="numResults"
+							id="numResults"
+						>
+							<option value={10}>10</option>
+							<option value={20}>20</option>
+							<option value={40}>40</option>
+						</select>
+					</div>
+				</div>
 			</form>
 		</>
 	);

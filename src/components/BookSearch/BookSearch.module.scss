@@ -18,7 +18,7 @@
 		background-color: white;
 
 		&:focus-within {
-			outline: 2px solid #CAE062;
+			outline: 2px solid #cae062;
 		}
 	}
 
@@ -38,9 +38,36 @@
 		}
 	}
 
+	&__numResultsWrapper {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+	}
+
+	&__numResultsContainer {
+		margin-left: 0.5rem;
+		border-radius: 50px;
+		padding: 0.2rem;
+		background-color: v.$secondary-bg-color;
+		padding: 0.5rem;
+
+		&:focus-within {
+			outline: 2px solid #cae062;
+		}
+	}
+
 	&__numResults {
-		border-radius: 5px;
-		border: 1px solid grey;
+		background-color: v.$secondary-bg-color;
+		border: none;
+		color: white;
+
+		&:focus {
+			outline: none;
+		}
+	}
+
+	&__numResultsLabel {
+		color: white;
 	}
 
 	&__button {
