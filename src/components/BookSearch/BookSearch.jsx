@@ -10,6 +10,7 @@ const BookSearch = () => {
 		setSearchQuery,
 		setNumResults,
 		setError,
+		setPage,
 	} = useContext(BookSearchContext);
 
 	const handleSubmit = async e => {
@@ -19,8 +20,6 @@ const BookSearch = () => {
 		const searchForm = new FormData(form);
 		const searchQuery = searchForm.get("search");
 		const numResults = searchForm.get("numResults");
-		setSearchQuery(searchQuery);
-		setNumResults(numResults);
 
 		if (!searchQuery || searchQuery.trim() === "") {
 			setBooks([]);
@@ -29,8 +28,12 @@ const BookSearch = () => {
 			return;
 		}
 
-		handleSearch(searchQuery, (page = 1), numResults);
-		
+		setSearchQuery(searchQuery);
+		setNumResults(numResults);
+		setPage(1);
+
+		await handleSearch(searchQuery, 1, numResults);
+		form.reset();
 	};
 
 	return (
