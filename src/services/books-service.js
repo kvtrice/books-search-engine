@@ -34,7 +34,7 @@ export const fetchBooks = async (searchQuery, page = 1, numResults = 10) => {
 			publisher: book.volumeInfo.publisher || "Unknown publisher",
 			publishedDate:
 				book.volumeInfo.publishedDate || "Unknown published date",
-			pageCount: book.volumeInfo.pageCount || "Unknown page count",
+			pageCount: book.volumeInfo.pageCount || "Unknown number of",
 			genres: book.volumeInfo.categories || "No categories available",
 			shortDescription: book.searchInfo?.textSnippet
 				? cleanUpHTMLDescriptions(book.searchInfo?.textSnippet)
