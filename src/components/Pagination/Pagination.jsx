@@ -3,7 +3,7 @@ import styles from "./Pagination.module.scss";
 import { useContext } from "react";
 
 const Pagination = ({ currentPage, lastPage }) => {
-	const { setPage } = useContext(BookSearchContext);
+	const { setPage, error } = useContext(BookSearchContext);
 
 	return (
 		<nav aria-label="Page navigation">
@@ -15,7 +15,7 @@ const Pagination = ({ currentPage, lastPage }) => {
 			</button>
 			<span>{currentPage}</span>
 			<button
-				disabled={currentPage === lastPage}
+				disabled={currentPage === lastPage || error}
 				onClick={() => setPage(currentPage + 1)}
 			>
 				Next
